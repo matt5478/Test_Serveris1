@@ -1,64 +1,116 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthy Parents Hub</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ddd;
+            text-align: center;
+        }
+    </style>
+    <script>
+        const pages = {
+            home: `
+                <div class="container">
+                    <h2>Welcome to Healthy Parents Hub</h2>
+                    <p>Your guide to quick workouts and healthy meals for busy parents.</p>
+                </div>
+            `,
+            workouts: `
+                <div class="container">
+                    <h2>Quick Workouts</h2>
+                    <p>Stay fit with these short and effective exercises:</p>
+                    <ul>
+                        <li><strong>10-Minute Cardio:</strong> Jumping jacks, high knees, and burpees.</li>
+                        <li><strong>Core Strength:</strong> Plank, sit-ups, and mountain climbers.</li>
+                        <li><strong>Family Fun:</strong> Dance-offs and active games with kids.</li>
+                    </ul>
+                </div>
+            `,
+            meals: `
+                <div class="container">
+                    <h2>Healthy Meals</h2>
+                    <p>Simple, nutritious recipes for the whole family:</p>
+                    <ul>
+                        <li><strong>Breakfast:</strong> Overnight oats with fresh fruit.</li>
+                        <li><strong>Lunch:</strong> Quick veggie wraps with hummus.</li>
+                        <li><strong>Dinner:</strong> One-pot chicken and rice.</li>
+                        <li><strong>Snacks:</strong> Apple slices with peanut butter.</li>
+                    </ul>
+                </div>
+            `,
+            about: `
+                <div class="container">
+                    <h2>About Us</h2>
+                    <p>Healthy Parents Hub is designed to help parents stay healthy and energized, even with a packed schedule.</p>
+                </div>
+            `
+        };
+
+        function loadPage(page) {
+            document.getElementById('content').innerHTML = pages[page];
+        }
+
+        window.onload = () => loadPage('home');
+    </script>
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Healthy Parents Hub</h1>
-            <p>Your guide to quick workouts and healthy meals for busy parents.</p>
         </div>
     </header>
 
     <nav>
         <ul class="nav-links">
-            <li><a href="#workouts">Quick Workouts</a></li>
-            <li><a href="#meals">Healthy Meals</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#" onclick="loadPage('home')">Home</a></li>
+            <li><a href="#" onclick="loadPage('workouts')">Quick Workouts</a></li>
+            <li><a href="#" onclick="loadPage('meals')">Healthy Meals</a></li>
+            <li><a href="#" onclick="loadPage('about')">About</a></li>
         </ul>
     </nav>
 
-    <section id="workouts">
-        <div class="container">
-            <h2>Quick Workouts</h2>
-            <p>Stay fit with these short and effective exercises:</p>
-            <ul>
-                <li><strong>10-Minute Cardio:</strong> Jumping jacks, high knees, and burpees.</li>
-                <li><strong>Core Strength:</strong> Plank, sit-ups, and mountain climbers.</li>
-                <li><strong>Family Fun:</strong> Dance-offs and active games with kids.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="meals">
-        <div class="container">
-            <h2>Healthy Meals</h2>
-            <p>Simple, nutritious recipes for the whole family:</p>
-            <ul>
-                <li><strong>Breakfast:</strong> Overnight oats with fresh fruit.</li>
-                <li><strong>Lunch:</strong> Quick veggie wraps with hummus.</li>
-                <li><strong>Dinner:</strong> One-pot chicken and rice.</li>
-                <li><strong>Snacks:</strong> Apple slices with peanut butter.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>Healthy Parents Hub is designed to help parents stay healthy and energized, even with a packed schedule. Our goal is to provide practical tips and resources that fit seamlessly into your busy life.</p>
-        </div>
+    <section id="content">
+        <!-- Page content will load here -->
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Healthy Parents Hub. All rights reserved.</p>
-        </div>
+        <p>&copy; 2025 Healthy Parents Hub. All rights reserved.</p>
     </footer>
 </body>
 </html>
