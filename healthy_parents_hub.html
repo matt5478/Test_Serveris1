@@ -26,7 +26,7 @@
             color: white;
             padding: 50px 0;
             text-align: center;
-            background-image: url('https://source.unsplash.com/1600x900/?healthy,parents'); /* Background image */
+            background-image: url('https://source.unsplash.com/1600x900/?healthy-lifestyle,family'); /* New background image */
             background-size: cover;
             background-position: center;
         }
@@ -145,38 +145,65 @@
         .trial-option a:hover {
             background-color: #2E7D32;
         }
+
+        /* About Us Section */
+        .about-us {
+            background-color: #f2f2f2;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .about-us h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2E7D32;
+        }
+        .about-us p {
+            font-size: 1.3em;
+            color: #333;
+        }
+        .about-us .quote {
+            font-size: 1.5em;
+            font-style: italic;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        /* Back to Home Button */
+        .back-home-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .back-home-btn:hover {
+            background-color: #2E7D32;
+        }
     </style>
     <script>
         function loadPage(page) {
             const pages = {
                 home: `
+                    <header>
+                        <h1>Healthy Parents Hub</h1>
+                        <p>"Caring for myself is not self-indulgence, it is self-preservation, and that is an act of political warfare." – Audre Lorde</p>
+                    </header>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="loadPage('home')">Home</a></li>
+                            <li><a href="#" onclick="loadPage('workouts')">Quick Workouts</a></li>
+                            <li><a href="#" onclick="loadPage('meals')">Healthy Meals</a></li>
+                            <li><a href="#" onclick="loadPage('about')">About Us</a></li>
+                        </ul>
+                    </nav>
                     <div class="container hero-section">
                         <h2>Welcome to Healthy Parents Hub</h2>
                         <p>Your ultimate guide to quick workouts 💪 and healthy meals 🍽 for busy parents. Stay fit, energized, and happy—without sacrificing time with your family!</p>
-                        <a href="#" onclick="loadPage('trial')">Start Your Journey for Free</a>
-                    </div>
-                `,
-                trial: `
-                    <div class="container">
-                        <h2>Choose Your Plan</h2>
-                        <p>Select the plan that works best for you!</p>
-                        <div class="trial-options">
-                            <div class="trial-option">
-                                <h3>Free 1 Month Trial</h3>
-                                <p>Get started with 1 month of free access to all content.</p>
-                                <a href="#">Claim Your Free Trial</a>
-                            </div>
-                            <div class="trial-option">
-                                <h3>$30/month for 3 Months</h3>
-                                <p>Enjoy 3 months of access at a discounted price.</p>
-                                <a href="#">Subscribe</a>
-                            </div>
-                            <div class="trial-option">
-                                <h3>$25/month for 6 Months</h3>
-                                <p>Get the best value with 6 months of access.</p>
-                                <a href="#">Subscribe</a>
-                            </div>
-                        </div>
+                        <a href="#" onclick="loadPage('workouts')">Start Your Journey</a>
                     </div>
                 `,
                 workouts: `
@@ -185,11 +212,12 @@
                         <p>Stay fit with these short and effective exercises:</p>
                         <img src="https://source.unsplash.com/800x500/?fitness,exercise" alt="People working out">
                         <ul>
-                            <li><a href="#" onclick="loadPage('cardio')">10-Minute Cardio 💃</a></li>
-                            <li><a href="#" onclick="loadPage('strength')">Strength Training 🏋️</a></li>
-                            <li><a href="#" onclick="loadPage('familyFun')">Family Fun 🏃‍♂️</a></li>
+                            <li><a href="#" onclick="loadPage('cardio')">💃 10-Minute Cardio</a></li>
+                            <li><a href="#" onclick="loadPage('strength')">🏋️ Strength Training</a></li>
+                            <li><a href="#" onclick="loadPage('familyFun')">🏃‍♂️ Family Fun</a></li>
                         </ul>
                     </div>
+                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
                 `,
                 cardio: `
                     <div class="container content">
@@ -202,6 +230,7 @@
                         </ul>
                         <p>In just 10 minutes, you can feel energized and ready to tackle your day!</p>
                     </div>
+                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
                 `,
                 strength: `
                     <div class="container content">
@@ -214,6 +243,7 @@
                         </ul>
                         <p>Strength training helps you feel stronger, reducing fatigue and increasing your overall fitness!</p>
                     </div>
+                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
                 `,
                 familyFun: `
                     <div class="container content">
@@ -226,6 +256,7 @@
                         </ul>
                         <p>These activities not only help you stay active but also make fitness a fun bonding experience for the whole family!</p>
                     </div>
+                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
                 `,
                 meals: `
                     <div class="container content">
@@ -233,50 +264,31 @@
                         <p>Simple, nutritious recipes for the whole family:</p>
                         <img src="https://source.unsplash.com/800x500/?healthy-food,meal" alt="Healthy food">
                         <ul>
-                            <li><strong>Breakfast 🍳:</strong> Overnight oats with fresh fruit.</li>
-                            <li><strong>Lunch 🥗:</strong> Quick veggie wraps with hummus.</li>
-                            <li><strong>Dinner 🍲:</strong> One-pot chicken and rice.</li>
-                            <li><strong>Snacks 🍏:</strong> Apple slices with peanut butter.</li>
+                            <li><strong>🍳 Breakfast:</strong> Overnight oats with fresh fruit.</li>
+                            <li><strong>🥗 Lunch:</strong> Quick veggie wraps with hummus.</li>
+                            <li><strong>🍲 Dinner:</strong> One-pot chicken and rice.</li>
+                            <li><strong>🍏 Snacks:</strong> Apple slices with peanut butter.</li>
                         </ul>
                     </div>
+                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
                 `,
                 about: `
-                    <div class="container">
-                        <h2>About Us 💚</h2>
-                        <p>At <strong>Healthy Parents Hub</strong>, our goal is to help parents <strong>stay healthy</strong>, <strong>energized</strong>, and <strong>happy</strong> 😊, so they can thrive in both life and parenthood. We believe that <strong>good health</strong> leads to a <strong>longer</strong>, <strong>happier</strong> life, bringing <strong>balance</strong> and <strong>joy</strong> to every day.</p>
-                        <p>💪 <strong>Why Fitness?</strong> Staying active boosts energy, reduces stress, and improves mood. Even short workouts help build strength, making it easier to keep up with your kids and daily tasks.</p>
-                        <p>🥗 <strong>Why Nutrition?</strong> Eating well fuels your body, sharpens your mind 🧠, and strengthens your immune system. A balanced diet keeps you energized and sets a great example for your children 👶.</p>
-                        <p>With <strong>simple workouts</strong>, nutritious meals, and wellness tips, we help parents <strong>take care of themselves</strong> without sacrificing family time. When parents are healthy, the whole family thrives! 💖😊</p>
+                    <div class="container about-us">
+                        <h2>About Us</h2>
+                        <p>We are a passionate team of health-conscious parents dedicated to helping others lead healthy and active lives, while balancing the challenges of parenting. Our goal is to make fitness and healthy living accessible for everyone, regardless of how busy life gets.</p>
+                        <p class="quote">"The greatest wealth is health." – Virgil</p>
                     </div>
+                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
                 `
             };
-            document.getElementById('content').innerHTML = pages[page];
+            document.body.innerHTML = pages[page];
         }
-
-        window.onload = () => loadPage('home');
+        window.onload = function() {
+            loadPage('home');
+        };
     </script>
 </head>
 <body>
-    <header>
-        <h1>Healthy Parents Hub</h1>
-        <p>Your guide to quick workouts and healthy meals for busy parents.</p>
-    </header>
-
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#" onclick="loadPage('home')">Home</a></li>
-            <li><a href="#" onclick="loadPage('workouts')">Quick Workouts</a></li>
-            <li><a href="#" onclick="loadPage('meals')">Healthy Meals</a></li>
-            <li><a href="#" onclick="loadPage('about')">About</a></li>
-        </ul>
-    </nav>
-
-    <section id="content">
-        <!-- Page content will load here -->
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Healthy Parents Hub. All rights reserved.</p>
-    </footer>
+    <!-- The content will be loaded dynamically via the loadPage function -->
 </body>
 </html>
