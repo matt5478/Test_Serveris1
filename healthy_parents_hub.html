@@ -5,26 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthy Parents Hub</title>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
             text-align: center;
         }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Header */
         header {
-            background-color: #4CAF50;
+            background-color: #4CAF50; /* Green */
             color: white;
-            padding: 20px 0;
+            padding: 50px 0;
+            text-align: center;
+            background-image: url('https://source.unsplash.com/1600x900/?healthy,parents'); /* Background image */
+            background-size: cover;
+            background-position: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        header p {
+            font-size: 1.5em;
+            margin-top: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            padding: 0 30px; /* Added padding to give space from sides */
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2E7D32; /* Darker Green */
+            padding: 15px;
+            text-align: center;
         }
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         nav ul li {
             display: inline;
@@ -32,57 +59,197 @@
         }
         nav ul li a {
             text-decoration: none;
-            color: #4CAF50;
+            color: white;
             font-weight: bold;
-            cursor: pointer;
+            font-size: 1.2em;
+            transition: color 0.3s;
         }
+        nav ul li a:hover {
+            color: #A5D6A7;
+        }
+
+        /* Content Section */
+        .content img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        /* Footer */
         footer {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #ddd;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
             text-align: center;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .hero-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2E7D32;
+        }
+        .hero-section p {
+            font-size: 1.3em;
+            color: #333;
+        }
+        .hero-section a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .hero-section a:hover {
+            background-color: #2E7D32;
+        }
+
+        /* Trial Options */
+        .trial-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .trial-option {
+            background-color: #ffffff;
+            padding: 30px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .trial-option a {
+            display: block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+        .trial-option a:hover {
+            background-color: #2E7D32;
         }
     </style>
     <script>
-        const pages = {
-            home: `
-                <div class="container">
-                    <h2>Welcome to Healthy Parents Hub</h2>
-                    <p>Your guide to quick workouts and healthy meals for busy parents.</p>
-                </div>
-            `,
-            workouts: `
-                <div class="container">
-                    <h2>Quick Workouts</h2>
-                    <p>Stay fit with these short and effective exercises:</p>
-                    <ul>
-                        <li><strong>10-Minute Cardio:</strong> Jumping jacks, high knees, and burpees.</li>
-                        <li><strong>Core Strength:</strong> Plank, sit-ups, and mountain climbers.</li>
-                        <li><strong>Family Fun:</strong> Dance-offs and active games with kids.</li>
-                    </ul>
-                </div>
-            `,
-            meals: `
-                <div class="container">
-                    <h2>Healthy Meals</h2>
-                    <p>Simple, nutritious recipes for the whole family:</p>
-                    <ul>
-                        <li><strong>Breakfast:</strong> Overnight oats with fresh fruit.</li>
-                        <li><strong>Lunch:</strong> Quick veggie wraps with hummus.</li>
-                        <li><strong>Dinner:</strong> One-pot chicken and rice.</li>
-                        <li><strong>Snacks:</strong> Apple slices with peanut butter.</li>
-                    </ul>
-                </div>
-            `,
-            about: `
-                <div class="container">
-                    <h2>About Us</h2>
-                    <p>Healthy Parents Hub is designed to help parents stay healthy and energized, even with a packed schedule.</p>
-                </div>
-            `
-        };
-
         function loadPage(page) {
+            const pages = {
+                home: `
+                    <div class="container hero-section">
+                        <h2>Welcome to Healthy Parents Hub</h2>
+                        <p>Your ultimate guide to quick workouts 💪 and healthy meals 🍽 for busy parents. Stay fit, energized, and happy—without sacrificing time with your family!</p>
+                        <a href="#" onclick="loadPage('trial')">Start Your Journey for Free</a>
+                    </div>
+                `,
+                trial: `
+                    <div class="container">
+                        <h2>Choose Your Plan</h2>
+                        <p>Select the plan that works best for you!</p>
+                        <div class="trial-options">
+                            <div class="trial-option">
+                                <h3>Free 1 Month Trial</h3>
+                                <p>Get started with 1 month of free access to all content.</p>
+                                <a href="#">Claim Your Free Trial</a>
+                            </div>
+                            <div class="trial-option">
+                                <h3>$30/month for 3 Months</h3>
+                                <p>Enjoy 3 months of access at a discounted price.</p>
+                                <a href="#">Subscribe</a>
+                            </div>
+                            <div class="trial-option">
+                                <h3>$25/month for 6 Months</h3>
+                                <p>Get the best value with 6 months of access.</p>
+                                <a href="#">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                workouts: `
+                    <div class="container content">
+                        <h2>Quick Workouts</h2>
+                        <p>Stay fit with these short and effective exercises:</p>
+                        <img src="https://source.unsplash.com/800x500/?fitness,exercise" alt="People working out">
+                        <ul>
+                            <li><a href="#" onclick="loadPage('cardio')">10-Minute Cardio 💃</a></li>
+                            <li><a href="#" onclick="loadPage('strength')">Strength Training 🏋️</a></li>
+                            <li><a href="#" onclick="loadPage('familyFun')">Family Fun 🏃‍♂️</a></li>
+                        </ul>
+                    </div>
+                `,
+                cardio: `
+                    <div class="container content">
+                        <h2>10-Minute Cardio 💪</h2>
+                        <p>Cardio exercises improve your cardiovascular health and boost your energy. Try these fun and quick exercises:</p>
+                        <ul>
+                            <li><strong>Jumping Jacks 🏃‍♀️:</strong> A great full-body exercise.</li>
+                            <li><strong>High Knees 🦵:</strong> Boost your heart rate and work your legs.</li>
+                            <li><strong>Burpees 💥:</strong> A challenging but effective total-body exercise.</li>
+                        </ul>
+                        <p>In just 10 minutes, you can feel energized and ready to tackle your day!</p>
+                    </div>
+                `,
+                strength: `
+                    <div class="container content">
+                        <h2>Strength Training 🏋️‍♀️</h2>
+                        <p>Strength exercises are essential for building muscle and increasing stamina. These at-home exercises don't require equipment:</p>
+                        <ul>
+                            <li><strong>Bodyweight Squats:</strong> Target your legs and glutes.</li>
+                            <li><strong>Push-ups:</strong> Strengthen your upper body and arms.</li>
+                            <li><strong>Plank:</strong> Build core strength and improve stability.</li>
+                        </ul>
+                        <p>Strength training helps you feel stronger, reducing fatigue and increasing your overall fitness!</p>
+                    </div>
+                `,
+                familyFun: `
+                    <div class="container content">
+                        <h2>Family Fun Exercises 🏃‍♂️</h2>
+                        <p>Get the whole family involved with these fun and easy exercises:</p>
+                        <ul>
+                            <li><strong>Dance-offs 💃:</strong> Have a dance competition with your kids!</li>
+                            <li><strong>Active Games 🎲:</strong> Play tag or hide-and-seek in the backyard.</li>
+                            <li><strong>Stretching Together 🤸‍♂️:</strong> Stretching can be fun when everyone joins in!</li>
+                        </ul>
+                        <p>These activities not only help you stay active but also make fitness a fun bonding experience for the whole family!</p>
+                    </div>
+                `,
+                meals: `
+                    <div class="container content">
+                        <h2>Healthy Meals 🍽</h2>
+                        <p>Simple, nutritious recipes for the whole family:</p>
+                        <img src="https://source.unsplash.com/800x500/?healthy-food,meal" alt="Healthy food">
+                        <ul>
+                            <li><strong>Breakfast 🍳:</strong> Overnight oats with fresh fruit.</li>
+                            <li><strong>Lunch 🥗:</strong> Quick veggie wraps with hummus.</li>
+                            <li><strong>Dinner 🍲:</strong> One-pot chicken and rice.</li>
+                            <li><strong>Snacks 🍏:</strong> Apple slices with peanut butter.</li>
+                        </ul>
+                    </div>
+                `,
+                about: `
+                    <div class="container">
+                        <h2>About Us 💚</h2>
+                        <p>At <strong>Healthy Parents Hub</strong>, our goal is to help parents <strong>stay healthy</strong>, <strong>energized</strong>, and <strong>happy</strong> 😊, so they can thrive in both life and parenthood. We believe that <strong>good health</strong> leads to a <strong>longer</strong>, <strong>happier</strong> life, bringing <strong>balance</strong> and <strong>joy</strong> to every day.</p>
+                        <p>💪 <strong>Why Fitness?</strong> Staying active boosts energy, reduces stress, and improves mood. Even short workouts help build strength, making it easier to keep up with your kids and daily tasks.</p>
+                        <p>🥗 <strong>Why Nutrition?</strong> Eating well fuels your body, sharpens your mind 🧠, and strengthens your immune system. A balanced diet keeps you energized and sets a great example for your children 👶.</p>
+                        <p>With <strong>simple workouts</strong>, nutritious meals, and wellness tips, we help parents <strong>take care of themselves</strong> without sacrificing family time. When parents are healthy, the whole family thrives! 💖😊</p>
+                    </div>
+                `
+            };
             document.getElementById('content').innerHTML = pages[page];
         }
 
@@ -91,9 +258,8 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Healthy Parents Hub</h1>
-        </div>
+        <h1>Healthy Parents Hub</h1>
+        <p>Your guide to quick workouts and healthy meals for busy parents.</p>
     </header>
 
     <nav>
