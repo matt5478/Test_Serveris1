@@ -5,7 +5,386 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthy Parents Hub</title>
     <style>
+        /* General Styles */<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Parents Hub</title>
+    <style>
         /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            background-image: url('https://source.unsplash.com/1600x900/?healthy-lifestyle,family');
+            background-size: cover;
+            background-position: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        header p {
+            font-size: 1.5em;
+            margin-top: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            padding: 0 30px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2E7D32;
+            padding: 15px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #A5D6A7;
+        }
+
+        /* Content Section */
+        .content img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+        }
+
+        /* Section Styling */
+        .hero-section, .about-us, .meal-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .hero-section h2, .about-us h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2E7D32;
+        }
+        .hero-section p, .about-us p {
+            font-size: 1.3em;
+            color: #333;
+        }
+
+        /* Back Button Styles */
+        .back-btn {
+            margin-top: 40px;
+            padding: 12px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .back-btn:hover {
+            background-color: #2E7D32;
+        }
+
+        .back-btn-space {
+            margin-top: 50px;
+        }
+
+        /* Meal and Workout Page Styling */
+        .workout-option, .meal-option {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .meal-buttons {
+            margin-top: 20px;
+        }
+        .meal-buttons button {
+            padding: 12px 30px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .meal-buttons button:hover {
+            background-color: #2E7D32;
+        }
+
+        /* Healthy Meals Page */
+        .meal-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2E7D32;
+        }
+        .meal-section p {
+            font-size: 1.3em;
+            color: #333;
+        }
+        .meal-option ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .meal-option ul li {
+            font-size: 1.2em;
+            color: #444;
+            margin: 10px 0;
+        }
+
+        .signup-section {
+            background-color: #A5D6A7;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .signup-section h2 {
+            font-size: 2.5em;
+            color: white;
+        }
+        .signup-option {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+        .signup-option p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .signup-option button {
+            padding: 12px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .signup-option button:hover {
+            background-color: #2E7D32;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+    // Function to load pages
+    function loadPage(page) {
+        let content = '';
+        switch (page) {
+            case 'home':
+                content = `
+                    <header>
+                        <h1>Healthy Parents Hub</h1>
+                        <p>"Caring for myself is not self-indulgence, it is self-preservation, and that is an act of political warfare." – Audre Lorde</p>
+                    </header>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="loadPage('workouts')">Quick Workouts</a></li>
+                            <li><a href="#" onclick="loadPage('meals')">Healthy Meals</a></li>
+                            <li><a href="#" onclick="loadPage('about')">About Us</a></li>
+                        </ul>
+                    </nav>
+                    <div class="container hero-section">
+                        <h2>Welcome to Healthy Parents Hub</h2>
+                        <p>Your ultimate guide to quick workouts 💪 and healthy meals 🍽 for busy parents.</p>
+                    </div>
+                    <div class="container signup-section">
+                        <h2>Sign Up for Free</h2>
+                        <div class="signup-option">
+                            <p>Get a 1-month free trial!</p>
+                            <button onclick="alert('Free trial activated')">Start Free Trial</button>
+                        </div>
+                        <div class="signup-option">
+                            <p>$30/month for 3 months</p>
+                            <button onclick="alert('Subscription activated for 3 months')">Subscribe</button>
+                        </div>
+                        <div class="signup-option">
+                            <p>$25/month for 6 months</p>
+                            <button onclick="alert('Subscription activated for 6 months')">Subscribe</button>
+                        </div>
+                    </div>
+                `;
+                break;
+            case 'workouts':
+                content = `
+                    <div class="container">
+                        <h2>Quick Workouts</h2>
+                        <p>Stay fit with these short and effective exercises:</p>
+                        <div class="workout-option">
+                            <h3>💃 10-Minute Cardio</h3>
+                            <p>Boost your heart rate with fun exercises like jumping jacks, burpees, and high knees!</p>
+                            <a href="#" class="back-btn" onclick="loadPage('cardio')">Start 10-Minute Cardio</a>
+                        </div>
+                        <div class="workout-option">
+                            <h3>🏋️ Strength Training</h3>
+                            <p>Build muscle and stamina with bodyweight exercises like squats and push-ups.</p>
+                            <a href="#" class="back-btn" onclick="loadPage('strength')">Start Strength Training</a>
+                        </div>
+                        <div class="workout-option">
+                            <h3>🏃‍♂️ Family Fun</h3>
+                            <p>Get the whole family moving with fun games like dance-offs and active tag.</p>
+                            <a href="#" class="back-btn" onclick="loadPage('familyFun')">Start Family Fun</a>
+                        </div>
+                        <a href="#" class="back-btn" onclick="loadPage('home')">Back to Home</a>
+                    </div>
+                `;
+                break;
+            case 'cardio':
+                content = `
+                    <div class="container">
+                        <h2>💃 10-Minute Cardio</h2>
+                        <p>Start with these high-energy exercises to get your heart pumping!</p>
+                        <ul>
+                            <li>Jumping Jacks - 1 minute</li>
+                            <li>Burpees - 1 minute</li>
+                            <li>Mountain Climbers - 1 minute</li>
+                            <li>High Knees - 1 minute</li>
+                            <li>Rest - 30 seconds</li>
+                        </ul>
+                        <a href="#" class="back-btn" onclick="loadPage('workouts')">Back to Quick Workouts</a>
+                        <a href="#" class="back-btn" onclick="loadPage('home')">Back to Home</a>
+                    </div>
+                `;
+                break;
+            case 'strength':
+                content = `
+                    <div class="container">
+                        <h2>🏋️ Strength Training</h2>
+                        <p>Build strength with these bodyweight exercises!</p>
+                        <ul>
+                            <li>Push-ups - 1 minute</li>
+                            <li>Squats - 1 minute</li>
+                            <li>Plank - 30 seconds</li>
+                            <li>Lunges - 1 minute</li>
+                            <li>Rest - 30 seconds</li>
+                        </ul>
+                        <a href="#" class="back-btn" onclick="loadPage('workouts')">Back to Quick Workouts</a>
+                        <a href="#" class="back-btn" onclick="loadPage('home')">Back to Home</a>
+                    </div>
+                `;
+                break;
+            case 'familyFun':
+                content = `
+                    <div class="container">
+                        <h2>🏃‍♂️ Family Fun</h2>
+                        <p>Get the whole family active with these fun exercises!</p>
+                        <ul>
+                            <li>Dance-off - 5 minutes</li>
+                            <li>Tag - 10 minutes</li>
+                            <li>Freeze Dance - 5 minutes</li>
+                            <li>Balloon Volleyball - 10 minutes</li>
+                        </ul>
+                        <a href="#" class="back-btn" onclick="loadPage('workouts')">Back to Quick Workouts</a>
+                        <a href="#" class="back-btn" onclick="loadPage('home')">Back to Home</a>
+                    </div>
+                `;
+                break;
+            case 'meals':
+                content = `
+                    <div class="container">
+                        <h2>Healthy Meals 🍽</h2>
+                        <p>Simple, nutritious recipes for the whole family:</p>
+                        <div class="meal-buttons">
+                            <button onclick="loadPage('lunch')">Lunch Recipes</button>
+                            <button onclick="loadPage('breakfast')">Breakfast Recipes</button>
+                            <button onclick="loadPage('dinner')">Dinner Recipes</button>
+                            <button onclick="loadPage('snacks')">Snack Recipes</button>
+                        </div>
+                        <a href="#" class="back-btn" onclick="loadPage('home')">Back to Home</a>
+                    </div>
+                `;
+                break;
+            case 'lunch':
+                content = `
+                    <div class="container">
+                        <h2>Lunch Recipes 🍽</h2>
+                        <ul>
+                            <li><strong>🥗 Veggie Wraps with Hummus</strong> (whole grain wrap, spinach, carrots, cucumber, hummus)</li>
+                            <li><strong>🍗 Grilled Chicken Salad</strong> (grilled chicken, mixed greens, olive oil, balsamic vinegar)</li>
+                            <li><strong>🌶 Quinoa-Stuffed Peppers</strong> (quinoa, bell peppers, black beans, cheese)</li>
+                        </ul>
+                        <a href="#" class="back-btn" onclick="loadPage('meals')">Back to Meals</a>
+                        <a href="#" class="back-btn" onclick="loadPage('home')">Back to Home</a>
+                    </div>
+                `;
+                break;
+            case 'about':
+                content = `
+                    <div class="container about-us">
+                        <h2>About Us</h2>
+                        <p><strong>Health is the cornerstone</strong> of a fulfilling life. We believe that taking care of your body is essential for a happy family life. That's why we focus on simple and effective workouts and meal plans that any busy parent can follow.</p>
+                        <p><strong>Our mission</strong> is to provide resources that help families maintain a healthy lifestyle. We know it's not always easy, but together we can make it possible!</p>
+                        <p><strong>Why is it important?</strong> Health impacts every aspect of our lives—from energy levels to emotional well-being. With our tips, we want to ensure your family thrives.</p>
+                        <a href="#" class="back-btn" onclick="loadPage('home')">Back to Home</a>
+                    </div>
+                `;
+                break;
+            default:
+                content = '<h1>Page Not Found</h1>';
+        }
+
+        // Update the page content
+        document.getElementById("app").innerHTML = content;
+    }
+
+    // Load home page by default
+    loadPage('home');
+</script>
+
+</body>
+</html>
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
