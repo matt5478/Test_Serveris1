@@ -22,11 +22,11 @@
 
         /* Header */
         header {
-            background-color: #4CAF50; /* Green */
+            background-color: #4CAF50;
             color: white;
             padding: 50px 0;
             text-align: center;
-            background-image: url('https://source.unsplash.com/1600x900/?healthy-lifestyle,family'); /* New background image */
+            background-image: url('https://source.unsplash.com/1600x900/?healthy-lifestyle,family');
             background-size: cover;
             background-position: center;
         }
@@ -39,12 +39,12 @@
             font-size: 1.5em;
             margin-top: 15px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-            padding: 0 30px; /* Added padding to give space from sides */
+            padding: 0 30px;
         }
 
         /* Navigation */
         nav {
-            background-color: #2E7D32; /* Darker Green */
+            background-color: #2E7D32;
             padding: 15px;
             text-align: center;
         }
@@ -86,24 +86,25 @@
             text-align: center;
         }
 
-        /* Hero Section */
-        .hero-section {
+        /* Section Styling */
+        .hero-section, .about-us, .meal-section {
             background-color: rgba(255, 255, 255, 0.8);
             padding: 30px;
             margin-top: 20px;
             border-radius: 10px;
         }
-        .hero-section h2 {
+        .hero-section h2, .about-us h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
             color: #2E7D32;
         }
-        .hero-section p {
+        .hero-section p, .about-us p {
             font-size: 1.3em;
             color: #333;
         }
-        .hero-section a {
-            display: inline-block;
+
+        /* Back Button Styles */
+        .back-btn {
             margin-top: 20px;
             padding: 12px 30px;
             background-color: #4CAF50;
@@ -113,79 +114,91 @@
             font-size: 1.1em;
             transition: background-color 0.3s;
         }
-        .hero-section a:hover {
+        .back-btn:hover {
             background-color: #2E7D32;
         }
 
-        /* Trial Options */
-        .trial-options {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+        /* Additional Button Styles */
+        .back-btn-space {
+            margin-top: 40px;
         }
-        .trial-option {
+
+        /* Meal and Workout Page Styling */
+        .workout-option, .meal-option {
             background-color: #ffffff;
-            padding: 30px;
-            border: 2px solid #4CAF50;
+            padding: 20px;
+            margin-bottom: 15px;
             border-radius: 10px;
-            width: 250px;
-            text-align: center;
-            font-size: 1.2em;
-        }
-        .trial-option a {
-            display: block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 15px;
-        }
-        .trial-option a:hover {
-            background-color: #2E7D32;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* About Us Section */
+        /* About Us Page Styling */
         .about-us {
-            background-color: #f2f2f2;
+            background-color: #f1f8e9;
             padding: 40px;
+            border-radius: 10px;
+        }
+        .about-us p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        /* Sign Up Section */
+        .signup-section {
+            background-color: #A5D6A7;
+            padding: 30px;
             border-radius: 10px;
             margin-top: 30px;
         }
-        .about-us h2 {
+        .signup-section h2 {
             font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #2E7D32;
+            color: white;
         }
-        .about-us p {
-            font-size: 1.3em;
+        .signup-option {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+        .signup-option p {
+            font-size: 1.2em;
             color: #333;
         }
-        .about-us .quote {
-            font-size: 1.5em;
-            font-style: italic;
-            color: #555;
-            margin-top: 15px;
-        }
-
-        /* Back to Home Button */
-        .back-home-btn {
-            margin-top: 20px;
+        .signup-option button {
             padding: 12px 30px;
             background-color: #4CAF50;
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 5px;
             font-size: 1.1em;
+            cursor: pointer;
             transition: background-color 0.3s;
         }
-        .back-home-btn:hover {
+        .signup-option button:hover {
+            background-color: #2E7D32;
+        }
+        
+        .meal-buttons {
+            margin-top: 20px;
+        }
+        .meal-buttons button {
+            padding: 12px 30px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .meal-buttons button:hover {
             background-color: #2E7D32;
         }
     </style>
     <script>
-        function loadPage(page) {
+        function loadPage(page, fromPage) {
             const pages = {
                 home: `
                     <header>
@@ -202,84 +215,73 @@
                     </nav>
                     <div class="container hero-section">
                         <h2>Welcome to Healthy Parents Hub</h2>
-                        <p>Your ultimate guide to quick workouts 💪 and healthy meals 🍽 for busy parents. Stay fit, energized, and happy—without sacrificing time with your family!</p>
-                        <a href="#" onclick="loadPage('workouts')">Start Your Journey</a>
+                        <p>Your ultimate guide to quick workouts 💪 and healthy meals 🍽 for busy parents.</p>
+                    </div>
+                    <div class="container signup-section">
+                        <h2>Sign Up for Free</h2>
+                        <div class="signup-option">
+                            <p>Get a 1-month free trial!</p>
+                            <button onclick="alert('Free trial activated')">Start Free Trial</button>
+                        </div>
+                        <div class="signup-option">
+                            <p>$30/month for 3 months</p>
+                            <button onclick="alert('Subscription activated for 3 months')">Subscribe</button>
+                        </div>
+                        <div class="signup-option">
+                            <p>$25/month for 6 months</p>
+                            <button onclick="alert('Subscription activated for 6 months')">Subscribe</button>
+                        </div>
                     </div>
                 `,
                 workouts: `
                     <div class="container content">
                         <h2>Quick Workouts</h2>
                         <p>Stay fit with these short and effective exercises:</p>
-                        <img src="https://source.unsplash.com/800x500/?fitness,exercise" alt="People working out">
-                        <ul>
-                            <li><a href="#" onclick="loadPage('cardio')">💃 10-Minute Cardio</a></li>
-                            <li><a href="#" onclick="loadPage('strength')">🏋️ Strength Training</a></li>
-                            <li><a href="#" onclick="loadPage('familyFun')">🏃‍♂️ Family Fun</a></li>
-                        </ul>
+                        <div class="workout-option">
+                            <h3>💃 10-Minute Cardio</h3>
+                            <p>Boost your heart rate with fun exercises like jumping jacks, burpees, and high knees!</p>
+                            <a href="#" class="back-btn" onclick="loadPage('cardio', 'workouts')">Start 10-Minute Cardio</a>
+                        </div>
+                        <div class="workout-option">
+                            <h3>🏋️ Strength Training</h3>
+                            <p>Build muscle and stamina with bodyweight exercises like squats and push-ups.</p>
+                            <a href="#" class="back-btn" onclick="loadPage('strength', 'workouts')">Start Strength Training</a>
+                        </div>
+                        <div class="workout-option">
+                            <h3>🏃‍♂️ Family Fun</h3>
+                            <p>Get the whole family moving with fun games like dance-offs and active tag.</p>
+                            <a href="#" class="back-btn" onclick="loadPage('familyFun', 'workouts')">Start Family Fun</a>
+                        </div>
+                        <a href="#" class="back-btn back-btn-space" onclick="loadPage('home')">Back to Home</a>
                     </div>
-                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
-                `,
-                cardio: `
-                    <div class="container content">
-                        <h2>10-Minute Cardio 💪</h2>
-                        <p>Cardio exercises improve your cardiovascular health and boost your energy. Try these fun and quick exercises:</p>
-                        <ul>
-                            <li><strong>Jumping Jacks 🏃‍♀️:</strong> A great full-body exercise.</li>
-                            <li><strong>High Knees 🦵:</strong> Boost your heart rate and work your legs.</li>
-                            <li><strong>Burpees 💥:</strong> A challenging but effective total-body exercise.</li>
-                        </ul>
-                        <p>In just 10 minutes, you can feel energized and ready to tackle your day!</p>
-                    </div>
-                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
-                `,
-                strength: `
-                    <div class="container content">
-                        <h2>Strength Training 🏋️‍♀️</h2>
-                        <p>Strength exercises are essential for building muscle and increasing stamina. These at-home exercises don't require equipment:</p>
-                        <ul>
-                            <li><strong>Bodyweight Squats:</strong> Target your legs and glutes.</li>
-                            <li><strong>Push-ups:</strong> Strengthen your upper body and arms.</li>
-                            <li><strong>Plank:</strong> Build core strength and improve stability.</li>
-                        </ul>
-                        <p>Strength training helps you feel stronger, reducing fatigue and increasing your overall fitness!</p>
-                    </div>
-                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
-                `,
-                familyFun: `
-                    <div class="container content">
-                        <h2>Family Fun Exercises 🏃‍♂️</h2>
-                        <p>Get the whole family involved with these fun and easy exercises:</p>
-                        <ul>
-                            <li><strong>Dance-offs 💃:</strong> Have a dance competition with your kids!</li>
-                            <li><strong>Active Games 🎲:</strong> Play tag or hide-and-seek in the backyard.</li>
-                            <li><strong>Stretching Together 🤸‍♂️:</strong> Stretching can be fun when everyone joins in!</li>
-                        </ul>
-                        <p>These activities not only help you stay active but also make fitness a fun bonding experience for the whole family!</p>
-                    </div>
-                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
                 `,
                 meals: `
                     <div class="container content">
                         <h2>Healthy Meals 🍽</h2>
                         <p>Simple, nutritious recipes for the whole family:</p>
-                        <img src="https://source.unsplash.com/800x500/?healthy-food,meal" alt="Healthy food">
-                        <ul>
-                            <li><strong>🍳 Breakfast:</strong> Overnight oats with fresh fruit.</li>
-                            <li><strong>🥗 Lunch:</strong> Quick veggie wraps with hummus.</li>
-                            <li><strong>🍲 Dinner:</strong> One-pot chicken and rice.</li>
-                            <li><strong>🍏 Snacks:</strong> Apple slices with peanut butter.</li>
-                        </ul>
+                        <div class="meal-buttons">
+                            <button onclick="loadPage('lunch')">Lunch Recipes</button>
+                            <button onclick="loadPage('breakfast')">Breakfast Recipes</button>
+                            <button onclick="loadPage('dinner')">Dinner Recipes</button>
+                            <button onclick="loadPage('snacks')">Snack Recipes</button>
+                        </div>
+                        <a href="#" class="back-btn" onclick="loadPage('home')">Back to Home</a>
                     </div>
-                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
                 `,
-                about: `
-                    <div class="container about-us">
-                        <h2>About Us</h2>
-                        <p>We are a passionate team of health-conscious parents dedicated to helping others lead healthy and active lives, while balancing the challenges of parenting. Our goal is to make fitness and healthy living accessible for everyone, regardless of how busy life gets.</p>
-                        <p class="quote">"The greatest wealth is health." – Virgil</p>
+                lunch: `
+                    <div class="container content">
+                        <h2>Lunch Recipes 🍽</h2>
+                        <p>Here are some lunch ideas for you:</p>
+                        <ul>
+                            <li><strong>Veggie Wraps with Hummus</strong> (whole grain wrap, spinach, carrots, cucumber, hummus)</li>
+                            <li><strong>Grilled Chicken Salad</strong> (grilled chicken, mixed greens, olive oil, balsamic vinegar)</li>
+                            <li><strong>Quinoa-Stuffed Peppers</strong> (quinoa, bell peppers, black beans, cheese)</li>
+                        </ul>
+                        <a href="#" class="back-btn" onclick="loadPage('meals')">Back to Meals</a>
                     </div>
-                    <a href="#" class="back-home-btn" onclick="loadPage('home')">Back to Home</a>
-                `
+                `,
+                // Similarly for other sections like breakfast, dinner, snacks...
+                // Each of these will include their own recipe lists
             };
             document.body.innerHTML = pages[page];
         }
